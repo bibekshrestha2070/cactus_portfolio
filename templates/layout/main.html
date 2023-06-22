@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    {% block title %}
+      <title>Bibek Shrestha</title>
+    {% endblock %}
+    <link rel="stylesheet" href="{% static '/plugins/bootstrap/bootstrap.min.css' %}">
+    <!-- slick slider -->
+    <link rel="stylesheet" href="{% static '/plugins/slick/slick.css' %}">
+    <!-- themefy-icon -->
+    <link rel="stylesheet" href="{% static '/plugins/themify-icons/themify-icons.css' %}">
+
+    <!-- Main Stylesheet -->
+    <link href="{% static '/css/style.css' %}" rel="stylesheet">
+
+
+        <!--Favicon-->
+    <link rel="shortcut icon" href="{% static '/images/favicon.png' %}" type="image/x-icon">
+    <link rel="icon" href="{% static '/images/favicon.png' %}" type="image/x-icon">
+  </head>
+  <body>
+    
+      {% include 'layout/navigation.html' %} 
+    
+    {% block content %}
+      <!-- default content text (typically empty) -->
+    {% endblock %}
+    {% include 'layout/contact.html' %} 
+    {% include 'layout/footer.html' %} 
+    <script src="{% static '/plugins/jQuery/jquery.min.js' %}"></script>
+    <!-- Bootstrap JS -->
+    <script src="{% static '/plugins/bootstrap/bootstrap.min.js' %}"></script>
+    <!-- slick slider -->
+    <script src="{% static '/plugins/slick/slick.min.js' %}"></script>
+    <!-- filter -->
+    <script src="{% static '/plugins/shuffle/shuffle.min.js' %}"></script>
+
+    <!-- Main Script -->
+    <script src="{% static '/js/script.js' %}"></script>
+  </body>
+  
+</html>
