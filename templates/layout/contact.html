@@ -13,18 +13,22 @@
             <h4 class="mb-80">Contact Form</h4>
             <form action="https://script.google.com/macros/s/AKfycbwloT0G0xeQKtK4_CXaNNycXAI4QQeI0VOAuBpFxtSKFKuEJQjnImisMwOp9hc1LAzG5A/exec" method="post" class="gform row" >
               <div class="col-md-6">
-                <input type="text" id="name" name="name" placeholder="Full Name" class="form-control px-0 mb-4" required>
+                <input type="text" id="name" name="name" placeholder="Full Name" class="form-control px-0 mb-4" >
+                <span class="name-invalid invalid-feedback" style="display:none">
+                  This field is required</span>
               </div>
               <div class="col-md-6">
-                <input type="email" id="email" name="email" placeholder="Email Address" class="form-control px-0 mb-4" required>
-                <span class="email-invalid" style="display:none">
+                <input type="email" id="email" name="email" placeholder="Email Address" class="form-control px-0 mb-4" >
+                <span class="email-invalid invalid-feedback" style="display:none">
                   Must be a valid email address</span>
               </div>
               <div class="col-12">
                 <textarea name="message" id="message" class="form-control px-0 mb-4"
-                  placeholder="Type Message Here" required></textarea>
+                  placeholder="Type Message Here" ></textarea>
+                  <span class="message-invalid invalid-feedback" style="display:none">
+                    This field is required</span>
               </div>
-              <div class="col-lg-6 col-10 mx-auto">
+              <div class="col-lg-6 col-10 mx-auto" style="margin:10px;">
                 <button class="btn btn-primary w-100 sub-button" type="submit">send</button>
               </div>
             </form>
