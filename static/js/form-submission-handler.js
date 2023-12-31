@@ -74,53 +74,61 @@
       return false;
     }
     */
-    if (!data.name && data.name == "") {
-      $('.name-invalid').css("display", "block")
-      return false;
-    }
 
-    if (!data.message && data.message == "") {
-      $('.message-invalid').css("display", "block")
+    if (data.name == undefined || data.message == undefined || data.email == undefined) {
+      $('.fields-invalid').css("display", "block")
       return false;
-    }
-
-    if (data.email == "" && !data.email && !validEmail(data.email)) {   // if email is not valid show error
-      $('.email-invalid').css("display", "block")
-      return false;
-    }
-
-    disableAllButtons(form);
-    var url = form.action;
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', url);
-    // xhr.withCredentials = true;
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.onreadystatechange = function () {
-      //console.log(xhr.status, xhr.statusText);
-      //console.log(xhr.responseText);
-      // var formElements = form.querySelector(".form-elements")
-      // if (formElements) {
-      //   formElements.style.display = "none"; // hide form
-      // }
-      var thankYouMessage = $('.thankyou_message');
-      //console.log(thankYouMessage);
-      if (thankYouMessage) {
-        thankYouMessage.css("display", "block")
+    } else {
+      if (!data.name && data.name == "") {
+        $('.name-invalid').css("display", "block")
+        return false;
       }
-      $(".gform").trigger('reset');
-      $('.sub-button').prop('disabled', false);
-      $('.invalid-feedback').css("display", "none")
-      window.setInterval(function () {
-        thankYouMessage.css("display", "none")
-      }, 30000);
-      return;
-    };
-    // url encode form data for sending as post data
-    var encoded = Object.keys(data).map(function (k) {
-      return encodeURIComponent(k) + "=" + encodeURIComponent(data[k]);
-    }).join('&');
-    //console.log(encoded);
-    xhr.send(encoded);
+
+      if (!data.message && data.message == "") {
+        $('.message-invalid').css("display", "block")
+        return false;
+      }
+
+      if (data.email == "" && !data.email && !validEmail(data.email)) {   // if email is not valid show error
+        $('.email-invalid').css("display", "block")
+        return false;
+      }
+
+
+      disableAllButtons(form);
+      var url = form.action;
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', url);
+      // xhr.withCredentials = true;
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      xhr.onreadystatechange = function () {
+        //console.log(xhr.status, xhr.statusText);
+        //console.log(xhr.responseText);
+        // var formElements = form.querySelector(".form-elements")
+        // if (formElements) {
+        //   formElements.style.display = "none"; // hide form
+        // }
+        var thankYouMessage = $('.thankyou_message');
+        //console.log(thankYouMessage);
+        if (thankYouMessage) {
+          thankYouMessage.css("display", "block")
+        }
+        $(".gform").trigger('reset');
+        $('.sub-button').prop('disabled', false);
+        $('.invalid-feedback').css("display", "none")
+        window.setInterval(function () {
+          thankYouMessage.css("display", "none")
+        }, 30000);
+        return;
+      };
+      // url encode form data for sending as post data
+      var encoded = Object.keys(data).map(function (k) {
+        return encodeURIComponent(k) + "=" + encodeURIComponent(data[k]);
+      }).join('&');
+      //console.log(encoded);
+      xhr.send(encoded);
+    }
+
 
   }
 
