@@ -51,8 +51,10 @@
     });
     var body = "";
     for (const property in formData) {
+      if (property != "g-recaptcha-response") {
+        body += property + " : " + formData[property] + " ";
+      }
 
-      body += property + " : " + formData[property] + " ";
     }
 
     // add form-specific values into the data
@@ -122,6 +124,7 @@
         $(".gform").trigger('reset');
         $('.sub-button').prop('disabled', false);
         $('.invalid-feedback').css("display", "none")
+        grecaptcha.reset()
         window.setInterval(function () {
           thankYouMessage.css("display", "none")
         }, 30000);
