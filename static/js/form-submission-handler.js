@@ -79,6 +79,7 @@
       $('.fields-invalid').css("display", "block")
       return false;
     } else {
+
       if (!data.name && data.name == "") {
         $('.name-invalid').css("display", "block")
         return false;
@@ -93,7 +94,12 @@
         $('.email-invalid').css("display", "block")
         return false;
       }
+      const v = grecaptcha.getResponse();
+      if (v.length == 0) {
 
+        $('.captcha-invalid').css("display", "block")
+        return false;
+      }
 
       disableAllButtons(form);
       var url = form.action;
