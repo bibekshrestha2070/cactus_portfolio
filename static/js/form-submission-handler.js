@@ -49,19 +49,19 @@
         formData[name] = data.join(', ');
       }
     });
-    var body = "";
-    for (const property in formData) {
-      if (property != "g-recaptcha-response") {
-        body += property + " : " + formData[property] + " ";
-      }
+    // var body = "";
+    // for (const property in formData) {
+    //   if (property != "g-recaptcha-response") {
+    //     body += property + " : " + formData[property] + " ";
+    //   }
 
-    }
+    // }
 
     // add form-specific values into the data
     formData.formDataNameOrder = JSON.stringify(fields);
     formData.formGoogleSheetName = form.dataset.sheet || "responses"; // default sheet name
     formData.formGoogleSendEmail = form.dataset.email || ""; // no email by default
-    formData.body = body;
+    // formData.body = body;
     //console.log(formData);
     return formData;
   }
@@ -110,20 +110,28 @@
       // xhr.withCredentials = true;
       xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
       xhr.onreadystatechange = function () {
+        response = JSON.parse(xhr.responseText);
         //console.log(xhr.status, xhr.statusText);
-        //console.log(xhr.responseText);
+        //console.log(response.result);
+        if (response.result == "error") {
+          console.log('a', $('.' + response.field + '-invalid'))
+          $('.' + response.field + '-invalid').css("display", "block")
+        } else {
+          var thankYouMessage = $('.thankyou_message');
+          //console.log(thankYouMessage);
+          if (thankYouMessage) {
+            thankYouMessage.css("display", "block")
+          }
+          $(".gform").trigger('reset');
+          $('.invalid-feedback').css("display", "none")
+        }
         // var formElements = form.querySelector(".form-elements")
         // if (formElements) {
         //   formElements.style.display = "none"; // hide form
         // }
-        var thankYouMessage = $('.thankyou_message');
-        //console.log(thankYouMessage);
-        if (thankYouMessage) {
-          thankYouMessage.css("display", "block")
-        }
-        $(".gform").trigger('reset');
+
         $('.sub-button').prop('disabled', false);
-        $('.invalid-feedback').css("display", "none")
+
         grecaptcha.reset()
         window.setInterval(function () {
           thankYouMessage.css("display", "none")
