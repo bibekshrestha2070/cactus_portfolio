@@ -9,10 +9,12 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="{% url '/about.html'%}">About</a></li>
-          <li><a href="{% url '/resume.html'%}">Resume</a></li>
-          <li><a href="{% url '/services.html'%}">Services</a></li>
+          <li><a href="{% url '/'%}" class="{% if request.path == '/' %}active{% endif %}">Home</a></li>
+          <li><a href="{% url '/about.html'%}" class="{% if request.path == '/about/' %}active{% endif %}">About</a></li>
+          <li><a href="{% url '/resume.html'%}" class="{% if request.path == '/resume/' %}active{% endif %}">Resume</a></li>
+          <li><a href="{% url '/services.html'%}" class="{% if request.path == '/services/' %}active{% endif %}">Services</a></li>
+          <li><a href="{% url '/contact.html'%}" class="{% if request.path == '/contact/' %}active{% endif %}">Contact</a></li>
+          
           {% comment %} <li><a href="portfolio.html">Portfolio</a></li>
           <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
@@ -31,7 +33,7 @@
               <li><a href="#">Dropdown 4</a></li>
             </ul>
           </li> {% endcomment %}
-          <li><a href="{% url '/contact.html'%}">Contact</a></li>
+      
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
