@@ -1,25 +1,48 @@
-<header class="navigation fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark">
-      <a class="navbar-brand font-tertiary h3" href="/"><img src="/static/images/logo.png" style = "width:70%" alt="Myself"></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
-        aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+<header id="header" class="header d-flex align-items-center light-background sticky-top">
+    <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+
+      <a href="/" class="logo d-flex align-items-center me-auto me-xl-0">
   
-      <div class="collapse navbar-collapse text-center" id="navigation">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url '/about.html'%}">about</a>
-          </li>
-         
-          {% comment %} <li class="nav-item">
-            <a class="nav-link" href="#">Portfolio</a>
+        <img src="/static/images/logo.png" alt="my-logo"> 
+        {% comment %} <h1 class="sitename">Bibek Shrestha</h1> {% endcomment %}
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="{% url '/about.html'%}">About</a></li>
+          <li><a href="{% url '/resume.html'%}">Resume</a></li>
+          <li><a href="{% url '/services.html'%}">Services</a></li>
+          {% comment %} <li><a href="portfolio.html">Portfolio</a></li>
+          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="#">Dropdown 1</a></li>
+              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                  <li><a href="#">Deep Dropdown 1</a></li>
+                  <li><a href="#">Deep Dropdown 2</a></li>
+                  <li><a href="#">Deep Dropdown 3</a></li>
+                  <li><a href="#">Deep Dropdown 4</a></li>
+                  <li><a href="#">Deep Dropdown 5</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Dropdown 2</a></li>
+              <li><a href="#">Dropdown 3</a></li>
+              <li><a href="#">Dropdown 4</a></li>
+            </ul>
           </li> {% endcomment %}
-        
+          <li><a href="{% url '/contact.html'%}">Contact</a></li>
         </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <div class="header-social-links">
+        {% comment %} <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a> {% endcomment %}
+        <a href="https://www.facebook.com/bibek.shrestha.35912/" class="facebook" target="_blank"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com/bibekshrestha2070/" class="instagram" target="_blank"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/er-bibek-shrestha-45508313a" class="linkedin" target="_blank"><i class="bi bi-linkedin"></i></a>
       </div>
-    </nav>
+
+    </div>
   </header>
+
