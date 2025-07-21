@@ -122,7 +122,7 @@
           if (thankYouMessage) {
             thankYouMessage.css("display", "block")
           }
-          $(".gform").trigger('reset');
+          $(".php-email-form").trigger('reset');
           $('.invalid-feedback').css("display", "none")
         }
         // var formElements = form.querySelector(".form-elements")
